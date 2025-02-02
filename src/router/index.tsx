@@ -3,8 +3,8 @@ import { lazy } from "react";
 
 import NotFound from "@/views/NotFound";
 const Home = lazy(() => import("@/views/Home"));
-const Comp1 = lazy(() => import("@/views/Comp1"));
-const Comp2 = lazy(() => import("@/views/Comp2"));
+const Page1 = lazy(() => import("@/views/Page1"));
+const Page2 = lazy(() => import("@/views/Page2"));
 
 const router = createBrowserRouter([
   {
@@ -13,15 +13,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true, // Default route for "/"
-        element: <Navigate to="comp1" replace />, // Redirect to "/comp1"
+        element: <Navigate to="page1" replace />, // Redirect to "/comp1"
       },
       {
-        path: "/comp1",
-        element: <Comp1 />,
+        path: "/page1",
+        element: <Page1 />,
       },
       {
-        path: "/comp2",
-        element: <Comp2 />,
+        path: "/page2",
+        element: <Page2 />,
       },
     ],
   },
