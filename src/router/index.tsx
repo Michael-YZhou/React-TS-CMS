@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { lazy } from "react";
 
 import NotFound from "@/views/NotFound";
@@ -12,7 +12,11 @@ const router = createBrowserRouter([
     element: <Home />,
     children: [
       {
-        index: true,
+        index: true, // Default route for "/"
+        element: <Navigate to="comp1" replace />, // Redirect to "/comp1"
+      },
+      {
+        path: "/comp1",
         element: <Comp1 />,
       },
       {
