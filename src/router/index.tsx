@@ -1,29 +1,23 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
-import App from "@/App";
 
 import NotFound from "@/views/NotFound";
-
 const Home = lazy(() => import("@/views/Home"));
-const About = lazy(() => import("@/views/About"));
-const User = lazy(() => import("@/views/User"));
+const Comp1 = lazy(() => import("@/views/Comp1"));
+const Comp2 = lazy(() => import("@/views/Comp2"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Comp1 />,
       },
       {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/user",
-        element: <User />,
+        path: "/comp2",
+        element: <Comp2 />,
       },
     ],
   },

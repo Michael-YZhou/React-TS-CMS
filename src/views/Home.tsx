@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -28,8 +30,8 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
+  getItem("Option 1", "/", <PieChartOutlined />),
+  getItem("Option 2", "/comp2", <DesktopOutlined />),
   getItem("User", "sub1", <UserOutlined />, [
     getItem("Tom", "3"),
     getItem("Bill", "4"),
@@ -44,6 +46,13 @@ const items: MenuItem[] = [
 
 const Home: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const navigateTo = useNavigate();
+
+  const handleClick = (e: { key: React.Key }) => {
+    console.log(e.key);
+    navigateTo(e.key as string);
+  };
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -62,6 +71,7 @@ const Home: React.FC = () => {
           defaultSelectedKeys={["1"]}
           mode="inline"
           items={items}
+          onClick={handleClick}
         />
       </Sider>
       {/* Right Content Area*/}
@@ -83,7 +93,8 @@ const Home: React.FC = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            Page Content
+            {/* Display Page Content */}
+            <Outlet />
           </div>
         </Content>
         {/* Right Footer */}
