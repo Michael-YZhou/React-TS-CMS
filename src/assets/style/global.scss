@@ -1,0 +1,16 @@
+$color: #eee;
+body {
+  background-color: $color;
+  user-select: none; // don't allow selection on text
+}
+
+img {
+  -webkit-user-drag: none; // don't allow img drag
+}
+
+// side bar logo
+.demo-logo-vertical {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
